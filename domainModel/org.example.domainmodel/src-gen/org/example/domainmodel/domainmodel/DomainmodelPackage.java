@@ -8,6 +8,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.xtext.xtype.XtypePackage;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -334,6 +336,85 @@ public interface DomainmodelPackage extends EPackage
    */
   int OPERATION_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
 
+  /**
+   * The meta object id for the '{@link org.example.domainmodel.domainmodel.impl.XImportDeclarationImpl <em>XImport Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.example.domainmodel.domainmodel.impl.XImportDeclarationImpl
+   * @see org.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getXImportDeclaration()
+   * @generated
+   */
+  int XIMPORT_DECLARATION = 7;
+
+  /**
+   * The feature id for the '<em><b>Wildcard</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @since 2.7
+   * @generated
+   * @ordered
+   */
+  int XIMPORT_DECLARATION__WILDCARD = XtypePackage.XIMPORT_DECLARATION__WILDCARD;
+
+  /**
+   * The feature id for the '<em><b>Extension</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @since 2.7
+   * @generated
+   * @ordered
+   */
+  int XIMPORT_DECLARATION__EXTENSION = XtypePackage.XIMPORT_DECLARATION__EXTENSION;
+
+  /**
+   * The feature id for the '<em><b>Static</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @since 2.7
+   * @generated
+   * @ordered
+   */
+  int XIMPORT_DECLARATION__STATIC = XtypePackage.XIMPORT_DECLARATION__STATIC;
+
+  /**
+   * The feature id for the '<em><b>Imported Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @since 2.7
+   * @generated
+   * @ordered
+   */
+  int XIMPORT_DECLARATION__IMPORTED_TYPE = XtypePackage.XIMPORT_DECLARATION__IMPORTED_TYPE;
+
+  /**
+   * The feature id for the '<em><b>Member Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @since 2.7
+   * @generated
+   * @ordered
+   */
+  int XIMPORT_DECLARATION__MEMBER_NAME = XtypePackage.XIMPORT_DECLARATION__MEMBER_NAME;
+
+  /**
+   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @since 2.7
+   * @generated
+   * @ordered
+   */
+  int XIMPORT_DECLARATION__IMPORTED_NAMESPACE = XtypePackage.XIMPORT_DECLARATION__IMPORTED_NAMESPACE;
+
+  /**
+   * The number of structural features of the '<em>XImport Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XIMPORT_DECLARATION_FEATURE_COUNT = XtypePackage.XIMPORT_DECLARATION_FEATURE_COUNT + 0;
+
 
   /**
    * Returns the meta object for class '{@link org.example.domainmodel.domainmodel.Domainmodel <em>Domainmodel</em>}'.
@@ -516,6 +597,16 @@ public interface DomainmodelPackage extends EPackage
   EReference getOperation_Body();
 
   /**
+   * Returns the meta object for class '{@link org.example.domainmodel.domainmodel.XImportDeclaration <em>XImport Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>XImport Declaration</em>'.
+   * @see org.example.domainmodel.domainmodel.XImportDeclaration
+   * @generated
+   */
+  EClass getXImportDeclaration();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -687,6 +778,16 @@ public interface DomainmodelPackage extends EPackage
      * @generated
      */
     EReference OPERATION__BODY = eINSTANCE.getOperation_Body();
+
+    /**
+     * The meta object literal for the '{@link org.example.domainmodel.domainmodel.impl.XImportDeclarationImpl <em>XImport Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.example.domainmodel.domainmodel.impl.XImportDeclarationImpl
+     * @see org.example.domainmodel.domainmodel.impl.DomainmodelPackageImpl#getXImportDeclaration()
+     * @generated
+     */
+    EClass XIMPORT_DECLARATION = eINSTANCE.getXImportDeclaration();
 
   }
 

@@ -24,7 +24,7 @@ public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
 	protected AbstractElementAlias match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q;
-	protected AbstractElementAlias match_XImportDeclaration_SemicolonKeyword_2_q;
+	protected AbstractElementAlias match_XImportDeclaration_LikeKeyword_2_q;
 	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_a;
 	protected AbstractElementAlias match_XParenthesizedExpression_LeftParenthesisKeyword_0_p;
 	
@@ -34,7 +34,7 @@ public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
 		match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2()));
-		match_XImportDeclaration_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getXImportDeclarationAccess().getSemicolonKeyword_2());
+		match_XImportDeclaration_LikeKeyword_2_q = new TokenAlias(false, true, grammarAccess.getXImportDeclarationAccess().getLikeKeyword_2());
 		match_XParenthesizedExpression_LeftParenthesisKeyword_0_a = new TokenAlias(true, true, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
 		match_XParenthesizedExpression_LeftParenthesisKeyword_0_p = new TokenAlias(true, false, grammarAccess.getXParenthesizedExpressionAccess().getLeftParenthesisKeyword_0());
 	}
@@ -82,8 +82,8 @@ public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_XExpressionInClosure_SemicolonKeyword_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q.equals(syntax))
 				emit_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XImportDeclaration_SemicolonKeyword_2_q.equals(syntax))
-				emit_XImportDeclaration_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XImportDeclaration_LikeKeyword_2_q.equals(syntax))
+				emit_XImportDeclaration_LikeKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XParenthesizedExpression_LeftParenthesisKeyword_0_a.equals(syntax))
 				emit_XParenthesizedExpression_LeftParenthesisKeyword_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XParenthesizedExpression_LeftParenthesisKeyword_0_p.equals(syntax))
@@ -130,7 +130,7 @@ public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     ';'?
+	 *     'like'?
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     importedNamespace=QualifiedNameWithWildcard (ambiguity) (rule end)
@@ -138,7 +138,7 @@ public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     memberName=ValidID (ambiguity) (rule end)
 	 *     wildcard?='*' (ambiguity) (rule end)
 	 */
-	protected void emit_XImportDeclaration_SemicolonKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XImportDeclaration_LikeKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

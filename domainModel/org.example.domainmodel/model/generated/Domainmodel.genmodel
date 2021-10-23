@@ -29,5 +29,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Operation/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Domainmodel.ecore#//Operation/body"/>
     </genClasses>
+    <genClasses ecoreClass="Domainmodel.ecore#//XImportDeclaration"/>
   </genPackages>
 </genmodel:GenModel>

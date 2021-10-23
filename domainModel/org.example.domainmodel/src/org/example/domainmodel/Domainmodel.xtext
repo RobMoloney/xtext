@@ -3,6 +3,8 @@ grammar org.example.domainmodel.Domainmodel with
  
 generate domainmodel "http://www.example.org/domainmodel/Domainmodel"
  
+import "http://www.eclipse.org/xtext/common/JavaVMTypes"
+ 
 Domainmodel:
     importSection=XImportSection?
     elements+=AbstractElement*;
@@ -11,7 +13,7 @@ AbstractElement:
     PackageDeclaration | Entity;
  
 PackageDeclaration:
-    'package' name=QualifiedName '{'
+    'storyBoy' name=QualifiedName '{'
         elements+=AbstractElement*
     '}';
  
@@ -32,3 +34,11 @@ Operation:
         (',' params+=FullJvmFormalParameter)*)?')'
         ':' type=JvmTypeReference 
     body=XBlockExpression;
+
+@Override 
+XImportDeclaration:
+	'herla' (
+		(static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID))
+		| importedType=[JvmDeclaredType|QualifiedName]
+		| importedNamespace=QualifiedNameWithWildcard) 'like'
+;

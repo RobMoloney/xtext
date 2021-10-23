@@ -56,7 +56,6 @@ import org.eclipse.xtext.xbase.XWhileExpression;
 import org.eclipse.xtext.xbase.XbasePackage;
 import org.eclipse.xtext.xbase.serializer.XbaseSemanticSequencer;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
-import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.example.domainmodel.domainmodel.Domainmodel;
@@ -65,6 +64,7 @@ import org.example.domainmodel.domainmodel.Entity;
 import org.example.domainmodel.domainmodel.Operation;
 import org.example.domainmodel.domainmodel.PackageDeclaration;
 import org.example.domainmodel.domainmodel.Property;
+import org.example.domainmodel.domainmodel.XImportDeclaration;
 import org.example.domainmodel.services.DomainmodelGrammarAccess;
 
 @SuppressWarnings("all")
@@ -95,6 +95,9 @@ public class DomainmodelSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case DomainmodelPackage.PROPERTY:
 				sequence_Property(context, (Property) semanticObject); 
+				return; 
+			case DomainmodelPackage.XIMPORT_DECLARATION:
+				sequence_XImportDeclaration(context, (XImportDeclaration) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -329,9 +332,6 @@ public class DomainmodelSemanticSequencer extends XbaseSemanticSequencer {
 			case XtypePackage.XFUNCTION_TYPE_REF:
 				sequence_XFunctionTypeRef(context, (XFunctionTypeRef) semanticObject); 
 				return; 
-			case XtypePackage.XIMPORT_DECLARATION:
-				sequence_XImportDeclaration(context, (XImportDeclaration) semanticObject); 
-				return; 
 			case XtypePackage.XIMPORT_SECTION:
 				sequence_XImportSection(context, (XImportSection) semanticObject); 
 				return; 
@@ -410,6 +410,22 @@ public class DomainmodelSemanticSequencer extends XbaseSemanticSequencer {
 		feeder.accept(grammarAccess.getPropertyAccess().getNameValidIDParserRuleCall_0_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getPropertyAccess().getTypeJvmTypeReferenceParserRuleCall_2_0(), semanticObject.getType());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XImportDeclaration returns XImportDeclaration
+	 *
+	 * Constraint:
+	 *     (
+	 *         (static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID)) | 
+	 *         importedType=[JvmDeclaredType|QualifiedName] | 
+	 *         importedNamespace=QualifiedNameWithWildcard
+	 *     )
+	 */
+	protected void sequence_XImportDeclaration(ISerializationContext context, XImportDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

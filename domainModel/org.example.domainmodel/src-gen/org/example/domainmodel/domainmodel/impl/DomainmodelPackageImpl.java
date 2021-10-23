@@ -25,6 +25,7 @@ import org.example.domainmodel.domainmodel.Feature;
 import org.example.domainmodel.domainmodel.Operation;
 import org.example.domainmodel.domainmodel.PackageDeclaration;
 import org.example.domainmodel.domainmodel.Property;
+import org.example.domainmodel.domainmodel.XImportDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,6 +83,13 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * @generated
    */
   private EClass operationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xImportDeclarationEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -344,6 +352,17 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
    * @generated
    */
   @Override
+  public EClass getXImportDeclaration()
+  {
+    return xImportDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public DomainmodelFactory getDomainmodelFactory()
   {
     return (DomainmodelFactory)getEFactoryInstance();
@@ -392,6 +411,8 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     operationEClass = createEClass(OPERATION);
     createEReference(operationEClass, OPERATION__PARAMS);
     createEReference(operationEClass, OPERATION__BODY);
+
+    xImportDeclarationEClass = createEClass(XIMPORT_DECLARATION);
   }
 
   /**
@@ -432,6 +453,7 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     entityEClass.getESuperTypes().add(this.getAbstractElement());
     propertyEClass.getESuperTypes().add(this.getFeature());
     operationEClass.getESuperTypes().add(this.getFeature());
+    xImportDeclarationEClass.getESuperTypes().add(theXtypePackage.getXImportDeclaration());
 
     // Initialize classes and features; add operations and parameters
     initEClass(domainmodelEClass, Domainmodel.class, "Domainmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -457,6 +479,8 @@ public class DomainmodelPackageImpl extends EPackageImpl implements DomainmodelP
     initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOperation_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(xImportDeclarationEClass, XImportDeclaration.class, "XImportDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

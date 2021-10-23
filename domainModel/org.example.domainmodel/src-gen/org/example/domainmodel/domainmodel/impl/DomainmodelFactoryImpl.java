@@ -72,6 +72,7 @@ public class DomainmodelFactoryImpl extends EFactoryImpl implements DomainmodelF
       case DomainmodelPackage.FEATURE: return createFeature();
       case DomainmodelPackage.PROPERTY: return createProperty();
       case DomainmodelPackage.OPERATION: return createOperation();
+      case DomainmodelPackage.XIMPORT_DECLARATION: return createXImportDeclaration();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -159,6 +160,18 @@ public class DomainmodelFactoryImpl extends EFactoryImpl implements DomainmodelF
   {
     OperationImpl operation = new OperationImpl();
     return operation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public XImportDeclaration createXImportDeclaration()
+  {
+    XImportDeclarationImpl xImportDeclaration = new XImportDeclarationImpl();
+    return xImportDeclaration;
   }
 
   /**

@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import java.util.List;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -74,7 +75,7 @@ public class DomainmodelGrammarAccess extends AbstractElementFinder.AbstractGram
 	public class PackageDeclarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.example.domainmodel.Domainmodel.PackageDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cStoryKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -83,18 +84,18 @@ public class DomainmodelGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//PackageDeclaration:
-		//    'package' name=QualifiedName '{'
+		//    'story' name=QualifiedName '{'
 		//        elements+=AbstractElement*
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'package' name=QualifiedName '{'
+		//'story' name=QualifiedName '{'
 		//    elements+=AbstractElement*
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//'package'
-		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
+		//'story'
+		public Keyword getStoryKeyword_0() { return cStoryKeyword_0; }
 		
 		//name=QualifiedName
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -311,6 +312,112 @@ public class DomainmodelGrammarAccess extends AbstractElementFinder.AbstractGram
 		//XBlockExpression
 		public RuleCall getBodyXBlockExpressionParserRuleCall_7_0() { return cBodyXBlockExpressionParserRuleCall_7_0; }
 	}
+	public class XImportDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.example.domainmodel.Domainmodel.XImportDeclaration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHerlaKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Assignment cStaticAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
+		private final Keyword cStaticStaticKeyword_1_0_0_0 = (Keyword)cStaticAssignment_1_0_0.eContents().get(0);
+		private final Assignment cExtensionAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final Keyword cExtensionExtensionKeyword_1_0_1_0 = (Keyword)cExtensionAssignment_1_0_1.eContents().get(0);
+		private final Assignment cImportedTypeAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final CrossReference cImportedTypeJvmDeclaredTypeCrossReference_1_0_2_0 = (CrossReference)cImportedTypeAssignment_1_0_2.eContents().get(0);
+		private final RuleCall cImportedTypeJvmDeclaredTypeQualifiedNameInStaticImportParserRuleCall_1_0_2_0_1 = (RuleCall)cImportedTypeJvmDeclaredTypeCrossReference_1_0_2_0.eContents().get(1);
+		private final Alternatives cAlternatives_1_0_3 = (Alternatives)cGroup_1_0.eContents().get(3);
+		private final Assignment cWildcardAssignment_1_0_3_0 = (Assignment)cAlternatives_1_0_3.eContents().get(0);
+		private final Keyword cWildcardAsteriskKeyword_1_0_3_0_0 = (Keyword)cWildcardAssignment_1_0_3_0.eContents().get(0);
+		private final Assignment cMemberNameAssignment_1_0_3_1 = (Assignment)cAlternatives_1_0_3.eContents().get(1);
+		private final RuleCall cMemberNameValidIDParserRuleCall_1_0_3_1_0 = (RuleCall)cMemberNameAssignment_1_0_3_1.eContents().get(0);
+		private final Assignment cImportedTypeAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final CrossReference cImportedTypeJvmDeclaredTypeCrossReference_1_1_0 = (CrossReference)cImportedTypeAssignment_1_1.eContents().get(0);
+		private final RuleCall cImportedTypeJvmDeclaredTypeQualifiedNameParserRuleCall_1_1_0_1 = (RuleCall)cImportedTypeJvmDeclaredTypeCrossReference_1_1_0.eContents().get(1);
+		private final Assignment cImportedNamespaceAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
+		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_2_0 = (RuleCall)cImportedNamespaceAssignment_1_2.eContents().get(0);
+		private final Keyword cLikeKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//@Override
+		//XImportDeclaration:
+		//    'herla' (
+		//        (static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID))
+		//        | importedType=[JvmDeclaredType|QualifiedName]
+		//        | importedNamespace=QualifiedNameWithWildcard) 'like'?
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'herla' (
+		//    (static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID))
+		//    | importedType=[JvmDeclaredType|QualifiedName]
+		//    | importedNamespace=QualifiedNameWithWildcard) 'like'?
+		public Group getGroup() { return cGroup; }
+		
+		//'herla'
+		public Keyword getHerlaKeyword_0() { return cHerlaKeyword_0; }
+		
+		//(
+		//       (static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID))
+		//       | importedType=[JvmDeclaredType|QualifiedName]
+		//       | importedNamespace=QualifiedNameWithWildcard)
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//(static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID))
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//static?='static'
+		public Assignment getStaticAssignment_1_0_0() { return cStaticAssignment_1_0_0; }
+		
+		//'static'
+		public Keyword getStaticStaticKeyword_1_0_0_0() { return cStaticStaticKeyword_1_0_0_0; }
+		
+		//extension?='extension'?
+		public Assignment getExtensionAssignment_1_0_1() { return cExtensionAssignment_1_0_1; }
+		
+		//'extension'
+		public Keyword getExtensionExtensionKeyword_1_0_1_0() { return cExtensionExtensionKeyword_1_0_1_0; }
+		
+		//importedType=[JvmDeclaredType|QualifiedNameInStaticImport]
+		public Assignment getImportedTypeAssignment_1_0_2() { return cImportedTypeAssignment_1_0_2; }
+		
+		//[JvmDeclaredType|QualifiedNameInStaticImport]
+		public CrossReference getImportedTypeJvmDeclaredTypeCrossReference_1_0_2_0() { return cImportedTypeJvmDeclaredTypeCrossReference_1_0_2_0; }
+		
+		//QualifiedNameInStaticImport
+		public RuleCall getImportedTypeJvmDeclaredTypeQualifiedNameInStaticImportParserRuleCall_1_0_2_0_1() { return cImportedTypeJvmDeclaredTypeQualifiedNameInStaticImportParserRuleCall_1_0_2_0_1; }
+		
+		//(wildcard?='*' | memberName=ValidID)
+		public Alternatives getAlternatives_1_0_3() { return cAlternatives_1_0_3; }
+		
+		//wildcard?='*'
+		public Assignment getWildcardAssignment_1_0_3_0() { return cWildcardAssignment_1_0_3_0; }
+		
+		//'*'
+		public Keyword getWildcardAsteriskKeyword_1_0_3_0_0() { return cWildcardAsteriskKeyword_1_0_3_0_0; }
+		
+		//memberName=ValidID
+		public Assignment getMemberNameAssignment_1_0_3_1() { return cMemberNameAssignment_1_0_3_1; }
+		
+		//ValidID
+		public RuleCall getMemberNameValidIDParserRuleCall_1_0_3_1_0() { return cMemberNameValidIDParserRuleCall_1_0_3_1_0; }
+		
+		//importedType=[JvmDeclaredType|QualifiedName]
+		public Assignment getImportedTypeAssignment_1_1() { return cImportedTypeAssignment_1_1; }
+		
+		//[JvmDeclaredType|QualifiedName]
+		public CrossReference getImportedTypeJvmDeclaredTypeCrossReference_1_1_0() { return cImportedTypeJvmDeclaredTypeCrossReference_1_1_0; }
+		
+		//QualifiedName
+		public RuleCall getImportedTypeJvmDeclaredTypeQualifiedNameParserRuleCall_1_1_0_1() { return cImportedTypeJvmDeclaredTypeQualifiedNameParserRuleCall_1_1_0_1; }
+		
+		//importedNamespace=QualifiedNameWithWildcard
+		public Assignment getImportedNamespaceAssignment_1_2() { return cImportedNamespaceAssignment_1_2; }
+		
+		//QualifiedNameWithWildcard
+		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_2_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_2_0; }
+		
+		//'like'?
+		public Keyword getLikeKeyword_2() { return cLikeKeyword_2; }
+	}
 	
 	
 	private final DomainmodelElements pDomainmodel;
@@ -320,6 +427,7 @@ public class DomainmodelGrammarAccess extends AbstractElementFinder.AbstractGram
 	private final FeatureElements pFeature;
 	private final PropertyElements pProperty;
 	private final OperationElements pOperation;
+	private final XImportDeclarationElements pXImportDeclaration;
 	
 	private final Grammar grammar;
 	
@@ -341,6 +449,7 @@ public class DomainmodelGrammarAccess extends AbstractElementFinder.AbstractGram
 		this.pFeature = new FeatureElements();
 		this.pProperty = new PropertyElements();
 		this.pOperation = new OperationElements();
+		this.pXImportDeclaration = new XImportDeclarationElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -396,7 +505,7 @@ public class DomainmodelGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//PackageDeclaration:
-	//    'package' name=QualifiedName '{'
+	//    'story' name=QualifiedName '{'
 	//        elements+=AbstractElement*
 	//    '}';
 	public PackageDeclarationElements getPackageDeclarationAccess() {
@@ -451,6 +560,21 @@ public class DomainmodelGrammarAccess extends AbstractElementFinder.AbstractGram
 	
 	public ParserRule getOperationRule() {
 		return getOperationAccess().getRule();
+	}
+	
+	//@Override
+	//XImportDeclaration:
+	//    'herla' (
+	//        (static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID))
+	//        | importedType=[JvmDeclaredType|QualifiedName]
+	//        | importedNamespace=QualifiedNameWithWildcard) 'like'?
+	//;
+	public XImportDeclarationElements getXImportDeclarationAccess() {
+		return pXImportDeclaration;
+	}
+	
+	public ParserRule getXImportDeclarationRule() {
+		return getXImportDeclarationAccess().getRule();
 	}
 	
 	//XExpression returns XExpression :
@@ -1366,20 +1490,6 @@ public class DomainmodelGrammarAccess extends AbstractElementFinder.AbstractGram
 	
 	public ParserRule getXImportSectionRule() {
 		return getXImportSectionAccess().getRule();
-	}
-	
-	//XImportDeclaration:
-	//    'import' (
-	//        (static?='static' extension?='extension'? importedType=[JvmDeclaredType|QualifiedNameInStaticImport] (wildcard?='*' | memberName=ValidID))
-	//        | importedType=[JvmDeclaredType|QualifiedName]
-	//        | importedNamespace=QualifiedNameWithWildcard) ';'?
-	//;
-	public XtypeGrammarAccess.XImportDeclarationElements getXImportDeclarationAccess() {
-		return gaXtype.getXImportDeclarationAccess();
-	}
-	
-	public ParserRule getXImportDeclarationRule() {
-		return getXImportDeclarationAccess().getRule();
 	}
 	
 	//QualifiedNameInStaticImport:

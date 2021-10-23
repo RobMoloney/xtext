@@ -111,6 +111,16 @@ public class DomainmodelAdapterFactory extends AdapterFactoryImpl
         return createOperationAdapter();
       }
       @Override
+      public Adapter caseXImportDeclaration(XImportDeclaration object)
+      {
+        return createXImportDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseXtype_XImportDeclaration(org.eclipse.xtext.xtype.XImportDeclaration object)
+      {
+        return createXtype_XImportDeclarationAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -233,6 +243,37 @@ public class DomainmodelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.example.domainmodel.domainmodel.XImportDeclaration <em>XImport Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.example.domainmodel.domainmodel.XImportDeclaration
+   * @generated
+   */
+  public Adapter createXImportDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xtype.XImportDeclaration <em>XImport Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.xtext.xtype.XImportDeclaration
+   * @since 2.7
+   * @generated
+   */
+  public Adapter createXtype_XImportDeclarationAdapter()
   {
     return null;
   }
