@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.xtext.builddsl</groupId>
+	<artifactId>parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>org.xtext.builddsl</module>
+		<module>org.xtext.builddsl.ide</module>
+		<module>org.xtext.builddsl.ui</module>
+		<module>org.xtext.builddsl.tests</module>
+		<module>org.xtext.builddsl.lib</module>
+	</modules>
+	
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<tycho-version>2.5.0</tycho-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<xtext.version>2.25.0</xtext.version>
+		<tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>eclipse</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/releases/2021-09/</url>
+		</repository>
+		<repository>
+			<id>eclipse-orbit</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/tools/orbit/downloads/drops/R20210825222808/repository/</url>
+		</repository>
+		
+		<repository>
+			<id>Xtext Update Site</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext.version}/</url>
+		</repository>
+	</repositories>
+	
+	<build>
+		
+		<pluginManagement>
+			
+			<plugins>
+				
+				<!-- xtend-maven-plugin is in pluginManagement instead of in plugins 
+					so that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way 
+					we can list it after. -->
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtext.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>xtend-install-debug-info</goal>
+								<goal>testCompile</goal>
+								<goal>xtend-test-install-debug-info</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<outputDirectory>xtend-gen</outputDirectory>
+					</configuration>
+				</plugin>
+			
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+					<executions>
+						<execution>
+							<id>gen-clean</id>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+							<configuration>
+								<filesets>
+									<fileset>
+										<directory>${basedir}/xtend-gen</directory>
+									</fileset>
+								</filesets>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.eclipse.tycho
+										</groupId>
+										<artifactId>
+											target-platform-configuration
+										</artifactId>
+										<versionRange>
+											[2.5.0,)
+										</versionRange>
+										<goals>
+											<goal>target-platform</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+			
+		</pluginManagement>
+
+		<plugins>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<dependency-resolution>
+						<extraRequirements>
+							<!--  Workaround for an issue with mockito depending on hamcrest -->
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.hamcrest</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	
+	</build>
+	
+</project>
